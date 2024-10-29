@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta Content-Type= "text/html" charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>Olive Oil</title>
+		<link rel="stylesheet" href="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/main.css" />
+		<link rel="icon" href="images/favicon.png" />
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+		
+
+		<style>
+			#map { position: relative; top: 0; left: 0; width: 100%; height: 800px; border:none;}
+		</style>
+
+		<style>
+			.Flexible-container {
+				position: relative;
+				padding-bottom: 56.25%;
+				padding-top: 30px;
+				height: 0;
+				overflow: hidden;
+			}
+
+			.Flexible-container iframe,   
+			.Flexible-container object,  
+			.Flexible-container embed {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+
+	</head>
+
+	<body onload="GetMap()">
+		<nav class="navbar">
+			<a class="navbar-brand" href="#">
+				<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/header-logo.png"  class="d-inline-block align-top header-logo" alt="">
+			</a>
+			<span class="navbar-text">
+				<a href="https://www.facebook.com/olejolivovy.sk/" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon awesome-facebook-square.svg" alt="facebook"></a>
+				<a href="https://www.instagram.com/p/CNpzr1SIOPq/" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon awesome-instagram.svg" alt="instagram"></a>
+				<a href="mailto:info@olejolivovy.sk" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon simple-gmail.svg" alt="gmail"></a>
+				<a href="https://www.olejolivovy.sk/" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon awesome-link.svg" alt="link"></a>
+			</span>
+		</nav>
+		
+		<section id="intro">
+			<div class="row">
+				<div class="col-lg-6" style="margin: 0 auto;padding: 15px;">
+				<div class="row">
+					<div class="col-lg-9" style="padding: 0px 30px;">
+						<!-- fields		 -->
+						<!-- <p class="intro-text-one">moduleCode_@_transactionCode_@_organizationName[0]</p>  -->
+						<!-- <p>Production Details</p> -->
+						<p class="intro-text-two"> moduleCode_@_transactionCode_@_locationCoordinates</p> 
+						<p class="intro-text-two"> []</p> 
+						<p class="intro-text-two"> []</p> 
+						<p class="intro-text-two"> Olive Oil - -</p> 
+						<p class="intro-text-two">moduleCode_@_transactionCode_@_Product_@_Description[5]</p>
+						<p class="intro-text-two"> OliveOil Spainn - Madrid</p> 
+						<p class="intro-text-two"> Manufacturing Date - Invalid Date</p>	
+						<p class="intro-text-two"> Expiry Date - Invalid Date</p>	
+						
+						<!-- <p>Ingredient Details</p>
+						<p class="intro-text-two">Pineapple - RM10091</p> 
+						<p class="intro-text-two">Pineapple Product ID 01</p> 
+						<p class="intro-text-two">Olive Oil Spain - Madrid</p> 
+						<p class="intro-text-two">8/10/2021, 10:45:25 AM</p> 				
+						<p class="intro-text-two">8/24/2021, 12:00:00 AM</p> 	 -->
+
+						<!-- <p class="intro-text-one">200</p>  -->
+						
+						<!-- <p class="intro-text-two">Olive juice extracted from picuda, picual and hojiblanca varieties</p> -->
+						<p class="intro-text-three">Priego de Cordoba, Andalusia, Produced in December 2020</p>
+					</div>
+					<div class="col-lg-3" style="flex-grow: 0;">
+						<!-- <img src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/oliveoil.png" alt="oliveoil"> -->
+						<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/oliveoil_bottles.png" alt="oliveoil" style="width: 90px;">
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+		<section id="tag-line">
+			<p class="tag" style="margin-bottom: 0px;">Flavour and Health combined in the best product</p>
+		</section>
+
+		<section id="proof-points">
+			<!-- <p class="proof-points-title">Olive Oil Proof Points</p> -->
+			<div class="row proof-points-row" style="background-color: #fff;padding: 15px;">
+				<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/aloe_cert1.png" alt="" style="height: 85px;">
+				<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/bio_cert.png" alt="" style="height: 85px;margin-left: 15px;">
+				<!-- <div class="rect" id="extra-virgin">
+					<img class="rect-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/no-preservatives.svg" alt="no-preservatives">
+					<p class="rect-text">Extra Virgin</p>
+				</div>
+				<div class="rect" id="organic">
+					<img class="rect-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/eco.svg" alt="organic">
+					<p class="rect-text">Organic</p>
+				</div>
+				<div class="rect" id="ecological">
+					<img class="rect-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/planet-earth.svg" alt="ecological">
+					<p class="rect-text">Ecological</p>
+				</div>
+				<div class="rect" id="certified">
+					<img class="rect-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/vegan-certified.svg" alt="certified">
+					<p class="rect-text">Certified</p>
+				</div> -->
+			</div>
+		</section>
+		
+		<section id="location">
+			<p class="journey">Product Journey</p>
+			<p class="travel">See the travel to your destination</p>
+		</section>
+
+		<div class="row">
+			<div class="col-lg-6" style="margin: 0 auto;">
+				<div id="map" style="width:100%; height:300px;box-shadow: 0 0px 4px 2px #ccc;border-radius: 4px;">
+				</div>
+				<script type="text/javascript" language="JavaScript">
+
+					function GetMap() {
+						var longitude = new Array();
+						var latitude = new Array();
+						var title = new Array();
+						var description = new Array();
+						longitude = [longitudeArray] 
+						latitude = [latitudeArray]
+						title = ["1 Basler Münster","2 Pune","3 Mexico"]
+						description = ["Basel","India", "US"]
+			
+						// longitude[0] = 	40.416690826416016        //two defined locations
+						// latitude[0] = -3.700345993041992
+						// title[0] = "1 Basler Münster"
+						// description[0] = "Basel"
+			
+						// longitude[1] =  18.520430   //second defined Location
+						// latitude[1] =  73.856743 
+						// title[1] = "2 Pune"
+						// description[1] = "India"
+			
+						// longitude[2] =  23.634501   //second defined Location
+						// latitude[2] =  -102.552788 
+						// title[2] = "3 Mexico"
+						// description[2] = "US"
+			
+						var total = 3                //number of locations
+			
+						var pinInfoBox;  //the pop up info box
+						var infoboxLayer = new Microsoft.Maps.EntityCollection();
+						var pinLayer = new Microsoft.Maps.EntityCollection();
+						var apiKey = "AmpgeSj6OVb9ILPwvjyIfwM3qmqm5yccyNGR_mxmbpw2znYZoXxQAz_KVbc84XCC";
+			
+							map = new Microsoft.Maps.Map(document.getElementById("map"), {credentials: apiKey});
+			
+							// Create the info box for the pushpin
+							pinInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false });
+							infoboxLayer.push(pinInfobox);
+			
+			
+							for (var i = 0 ; i < total; i++){
+								//add pushpins
+								var latLon = new Microsoft.Maps.Location(longitude[i], latitude[i]);
+								var pin = new Microsoft.Maps.Pushpin(latLon);
+								pin.Title = title[i];//usually title of the infobox
+								pin.Description = description[i]; //information you want to display in the infobox
+								pinLayer.push(pin); //add pushpin to pinLayer
+								Microsoft.Maps.Events.addHandler(pin, 'mouseover', displayInfobox);
+								Microsoft.Maps.Events.addHandler(pin, 'mouseout', hideInfobox);
+							}
+			
+							map.entities.push(pinLayer);
+							map.entities.push(infoboxLayer);
+							map.setView({zoom: 1, center: new Microsoft.Maps.Location(47.55330556, 7.59001851)});
+			
+			
+						}
+			
+						function displayInfobox(e) 
+						{
+							pinInfobox.setOptions({title: e.target.Title, description: e.target.Description, visible:true, offset: new Microsoft.Maps.Point(0,25)});
+							pinInfobox.setLocation(e.target.getLocation());
+						}
+			
+						function hideInfobox(e) 
+						{
+							pinInfobox.setOptions({ visible: false });
+						}
+			
+			
+					</script>
+				<!-- <img style="width:100%" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/map-location.png" alt="map"> -->
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6" style="margin: 0 auto;">
+				<section id="info">
+					<div class="line" style="margin-bottom: 30px;"></div>
+					<div style="width: 100%;">
+						<div id="Ingradient" class="info-boxes">
+							<div class="circle"></div>
+							<div class="sourcing-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Ingredient Details</p>
+								</div>
+								<div class="info-box">
+									<hr>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Input asset name</div>
+										<div class="col-lg-6 text-right product_desc">Olive Oil - -</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Product description</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Product_@_Description[9]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Grade, Cultivation method</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Grade[9] , moduleCode_@_transactionCode_@_Cultivation_@_Method[9]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">ILOVEACEITE - Jerman</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Produced date</div>
+										<div class="col-lg-6 text-right product_desc">Invalid Date</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Expiry date</div>
+										<div class="col-lg-6 text-right product_desc">Invalid Date</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="sourcing" class="info-boxes">
+							<div class="circle"></div>
+							<div class="sourcing-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Sourcing</p>
+									<!-- <button class="source-btn arrow-button"><i class="fas fa-angle-down"></i></button> -->
+								</div>
+								<div class="info-box">
+									<hr>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Date/Time</div>
+										<div class="col-lg-6 text-right product_desc">Invalid Date - Invalid Date</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Inspection remarks</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Inspection_@_Remarks[7]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">Oliveline - US</div>
+									</div>
+									<!-- <div class="row details_row">
+										<div class="col-lg-6 product_lbl">Blockchain transaction</div>
+										<div class="col-lg-6 text-right product_desc">
+											<button id="location-button" class="new_btn_view" disabled>View</button>
+										</div>
+									</div> -->
+									<!-- <button id="location-button" class="info-buttons location active" disabled>Location</button>
+									<button id="location-history-button" class="info-buttons location-history">Location History</button>
+									<div id="info-location">
+										<p class="info-text">Sourced directly from the heart of “Sierras Subbéticas Natural Park”, Priego de Cordoba in Andalusia, Spain</p>
+										<p class="intro-text-two">Pineapple - RM10091</p> 
+										<p class="intro-text-two">Pineapple Product ID 01</p> 
+										<p class="intro-text-two">Olive Oil Spain - Madrid</p> 
+										 
+										<img style="width:100%" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/map-location.png" alt="map">
+										<p class="info-text">Location: Donlope Servicios Generales, C/ Llana Nº 5 , El Cañuelo. Priego de Córdoba 14815, Spain</p>
+									</div>
+									<div id="info-location-history">
+										<p class="info-text">Andalusia's geography and climate, gifted with mountain wealthy slopes, mild winters and long and hot dry summers, rank as the best for olive cultivation. Olives from this region are destined exclusively for olive oil production. </br></br>
+										This region is located in the geographical heart of the “Sierras Subbéticas Natural Park”, which has its own microclimate, characterized by suitable rainfall and substantial temperature differences between seasons. It can drop to around 0º C (32º F) in winter and rise to 35º C (95º F) in warm western Mediterranean summer.</p>
+										
+									</div> -->
+								</div>
+							</div>
+						</div>
+						<div id="production" class="info-boxes">
+							<div class="circle"></div>
+							<div class="production-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Distribution</p>
+									<!-- <button class="production-btn arrow-button"><i class="fas fa-angle-down"></i></button> -->
+								</div>
+								<div class="info-box">
+									<hr>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Date/Time</div>
+										<div class="col-lg-6 text-right product_desc">Invalid Date - Invalid Date</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Grade, Ingredients, Nutrients</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Ingredients[3] </div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">OliveOil Spainn - Madrid</div>
+									</div>
+									<!-- <button id="processing-button" class="info-buttons processing active" disabled>Processing</button>
+									<button id="production-process-button" class="info-buttons production-process">Production Proccess</button>
+									<div id="info-processing">
+										<p class="info-text">GRUPO DON LOPE only elaborates extra virgin olive oil obtained from the fruit of olive trees of varieties Picudo, Hojiblanco and Picual, cold extracted and processed by mechanical means that cause no alteration in the oil, retaining the flavour, aroma and characteristics of the olives from which it is obtained. <br><br>Production goes through the following stages</p>
+										<p class="intro-text-two">8/10/2021, 10:59:43 AM</p> 				
+										<p class="intro-text-two">Olive Line - Madrid</p> 
+										<div class="stages">
+											<p class="stages-text">Harvest</p>
+											<div class="yellow-line"></div>
+											<p class="stages-text">Transport</p>
+											<div class="yellow-line"></div>
+											<p class="stages-text">Pressing</p>
+											<div class="yellow-line"></div>
+											<p class="stages-text">Storage</p>
+											<div class="yellow-line"></div>
+											<p class="stages-text">Packing</p>
+										</div>
+										<a class="read-more" id="read-more-one" href="" onclick="return false">Read More...</a>
+										<img src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/production-image.png" class="production-image" id="production-image" alt="production">
+									</div>
+									<div id="info-production-process">
+										<p class="info-text">The olives are gathered from chosen branches of the trees through traditional hand pole beating and mechanised vibration, all the production is bottled and packaged in the same mill.</p>
+										 
+										<a class="read-more" id="read-more-two" href="" onclick="return false;">Read More...</a>
+										<img class="production-process-image"
+										id="production-process-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/production-process.png" alt="productoin-process">
+									</div> -->
+								</div>
+							</div>
+						</div>
+						<div id="quality" class="info-boxes">
+							<div class="circle"></div>
+							<div class="quality-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Retailer</p>
+									<!-- <button class="quality-btn arrow-button"><i class="fas fa-angle-down"></i></button> -->
+								</div>
+								<div class="info-box">
+									<hr>									
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Date/Time</div>
+										<div class="col-lg-6 text-right product_desc">Invalid Date - Invalid Date</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">SpainFarmer - Malaysia</div>
+									</div>
+									<!-- <button id="organic-production-button" class="info-buttons organic-production active" disabled>Organinc Production</button>
+									<button id="analytical-data-button" class="info-buttons analytical-data">Analytical Data</button>
+									<button id="certified-quality-button" class="info-buttons certified-quality">Certified Quality</button> -->
+									<!-- <div id="info-organic-production">
+										<p class="info-text">Produced under the Organic Agriculture certificate using exclusively organic fertilizers and minimum tillage to respect, to the maximum, the flora and fauna of the tree's soil and the Environment. <br><br>
+										100% Organic Extra Virgin Olive Oil (Olive Juice) with CAAE ECOLOGICAL CERTIFICATE and ES-ECO-001-AN EU AGRICULTURE seal</p>
+										
+										<img src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/certified.png" style="width:100%" alt="certified">
+									</div>
+									<div id="info-analytical-data">
+										<p class="info-text">Acidity is the basic and simplest indicator of the quality of virgin olive oil. Don Lope Olive oil has a top value in this quality parameter 0.2%. 
+										Virgin olive oils must not exceed an acidity value of 2%. The limit for extra virgin olive oils is 0.8%
+										</p>
+										<ul class="info-text">
+											Technical data:
+											<li class="info-text">Acidity: Under 0,4%</li>
+											<li class="info-text">Peroxide index: 3,25 /o2</li>
+											<li class="info-text">K232: 1,66</li>
+											<li class="info-text">K270: 0,13</li>
+										</ul>
+										<a class="read-more" id="read-more-three" href="" onclick="return false;">Read More...</a>
+										<img  id="analytical-data-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/analytical-data.png" style="width: 100%;" alt="analytical-data">
+									</div> -->
+									<div id="info-certified-quality" >
+										<p class="info-text" style="font-size: 12px;;">Quality certified by an independent laboratory for reference.
+										</p>
+										
+										<img  id="certified-by-lab-image" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/certified-by-lab.png" style="width: 100%;" alt="certified-by-lab">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <div id="transparency" class="info-boxes">
+							<div class="circle"></div>
+							<div class="transparency-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Transparency</p>
+								</div>
+								<div class="info-box">
+									<hr>
+									<button id="transparency-button" class="info-buttons transparency active" disabled>Transparency</button>
+									<button id="eu-comparison-button" class="info-buttons eu-comparison">EU Comparison</button>
+									<div id="info-transparency">
+										<p class="info-text">100% Extra virgin olive oil from the mill, which is where it was produced and shipped to you directly without any middlemen. Certified packaging & quality - Spain to Slovakia. <br><br> Fully transparent information shared on the entire process from the olive tree to the table; therefore, we share the Chemical Analysis Bulletin with an informative tasting carried out by an independent laboratory, where its quality and production process are certified.</p>
+										<p class="intro-text-two">8/10/2021, 10:59:43 AM</p> 				
+										<p class="intro-text-two">ILOVEACEITE - Madrid</p>
+										<a class="read-more" id="read-more-four" href="" onclick="return false;">Read More...</a>
+										<img src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/transparency.png" id="transparency-image" class="transparency-image" alt="">
+									</div>
+									<div id="info-eu-comparison">
+										  
+										<p class="info-text">Refer below to 2021 Harvesting information of Don Lope compared to EU standards.</p>
+										<img src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/eustandards.png" id="eustandards-image" style="width: 100%;" alt="">
+									</div>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<section id="footer">
+			<img class="footer-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/footer.png" alt="">
+			<p class="copyright">Copyright 2021 All Rights Reserved</p>
+		</section>
+
+		<script src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/main.js"></script>
+	</body>
+</html>

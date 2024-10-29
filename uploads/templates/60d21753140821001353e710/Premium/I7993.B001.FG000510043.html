@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta Content-Type= "text/html" charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>Olive Oil</title>
+		<link rel="stylesheet" href="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/main.css" />
+		<link rel="icon" href="images/favicon.png" />
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+		
+
+		<style>
+			#map { position: relative; top: 0; left: 0; width: 100%; height: 800px; border:none;}
+		</style>
+
+		<style>
+			.Flexible-container {
+				position: relative;
+				padding-bottom: 56.25%;
+				padding-top: 30px;
+				height: 0;
+				overflow: hidden;
+			}
+
+			.Flexible-container iframe,   
+			.Flexible-container object,  
+			.Flexible-container embed {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+
+	</head>
+
+	<body onload="GetMap()">
+		<nav class="navbar">
+			<a class="navbar-brand" href="#">
+				<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/header-logo.png"  class="d-inline-block align-top header-logo" alt="">
+			</a>
+			<span class="navbar-text">
+				<a href="https://www.facebook.com/olejolivovy.sk/" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon awesome-facebook-square.svg" alt="facebook"></a>
+				<a href="https://www.instagram.com/p/CNpzr1SIOPq/" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon awesome-instagram.svg" alt="instagram"></a>
+				<a href="mailto:info@olejolivovy.sk" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon simple-gmail.svg" alt="gmail"></a>
+				<a href="https://www.olejolivovy.sk/" target="_blank"><img class="social-media" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/Icon awesome-link.svg" alt="link"></a>
+			</span>
+		</nav>
+		
+		<section id="intro">
+			<div class="row">
+				<div class="col-lg-6" style="margin: 0 auto;padding: 15px;">
+				<div class="row">
+					<div class="col-lg-9" style="padding: 0px 30px;">
+						<p class="intro-text-two"> moduleCode_@_transactionCode_@_locationCoordinates</p> 
+						<p class="intro-text-two"> moduleCode_@_transactionCode_@_assetName[5] - moduleCode_@_transactionCode_@_assetId[5]</p> 
+						<p class="intro-text-two">moduleCode_@_transactionCode_@_Product_@_Description[5]</p>
+						<p class="intro-text-two"> moduleCode_@_transactionCode_@_transactionEntityName[5] - moduleCode_@_transactionCode_@_assetLocation[5]</p> 
+						<p class="intro-text-two"> Manufacturing Date - moduleCode_@_transactionCode_@_effectiveDate[5]</p>	
+						<p class="intro-text-two"> Expiry Date - moduleCode_@_transactionCode_@_expiryDate[5]</p>	
+						<!-- <p class="intro-text-three">Priego de Cordoba, Andalusia, Produced in December 2020</p> -->
+					</div>
+					<div class="col-lg-3" style="flex-grow: 0;">
+						<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/oliveoil_bottles.png" alt="oliveoil" style="width: 90px;">
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+
+		<section id="tag-line">
+			<p class="tag" style="margin-bottom: 0px;">Flavour and Health combined in the best product</p>
+		</section>
+
+		<section id="proof-points">
+			<div class="row proof-points-row" style="background-color: #fff;padding: 15px;">
+				<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/aloe_cert1.png" alt="" style="height: 85px;">
+				<img src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/bio_cert.png" alt="" style="height: 85px;margin-left: 15px;">				
+			</div>
+		</section>
+		
+		<section id="location">
+			<p class="journey">Product Journey</p>
+			<p class="travel">See the travel to your destination</p>
+		</section>
+
+		<div class="row">
+			<div class="col-lg-6" style="margin: 0 auto;">
+				<div id="map" style="width:100%; height:300px;box-shadow: 0 0px 4px 2px #ccc;border-radius: 4px;">
+				</div>
+				<!-- <script type="text/javascript" language="JavaScript">function GetMap(){var longitude=new Array();var latitude=new Array();var title=new Array();var description=new Array();longitude=[];latitude=[];title=[];description=["Basel","India","US"];var total=0;var pinInfoBox;var infoboxLayer=new Microsoft.Maps.EntityCollection();var pinLayer=new Microsoft.Maps.EntityCollection();var apiKey="AmpgeSj6OVb9ILPwvjyIfwM3qmqm5yccyNGR_mxmbpw2znYZoXxQAz_KVbc84XCC";map=new Microsoft.Maps.Map(document.getElementById("map"),{credentials:apiKey});pinInfobox=new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0,0),{visible:!1});infoboxLayer.push(pinInfobox);for(var i=0;i<total;i++){var latLon=new Microsoft.Maps.Location(longitude[i],latitude[i]);var pin=new Microsoft.Maps.Pushpin(latLon);pin.Title=title[i];pin.Description=description[i];pinLayer.push(pin);Microsoft.Maps.Events.addHandler(pin,"mouseover",displayInfobox);Microsoft.Maps.Events.addHandler(pin,"mouseout",hideInfobox)};map.entities.push(pinLayer);map.entities.push(infoboxLayer);map.setView({zoom:1,center:new Microsoft.Maps.Location(47.55330556,7.59001851)})}function displayInfobox(e){pinInfobox.setOptions({title:e.target.Title,description:e.target.Description,visible:!0,offset:new Microsoft.Maps.Point(0,25)});pinInfobox.setLocation(e.target.getLocation())}function hideInfobox(e){pinInfobox.setOptions({visible:!1})};</script> -->
+				<input type="text" class="class_longitude" value=MFG_@_Processed_Food_@_longitude hidden>
+				<input type="text" class="class_latitude" value=MFG_@_Processed_Food_@_latitude hidden>
+				<input type="text" class="class_assetLocation" value="1. MFG_@_Processed_Food_@_assetLocation" hidden>
+				
+
+				<input type="text" class="class_longitude" value=GRW_@_Farm_Produce_@_longitude hidden>
+				<input type="text" class="class_latitude" value=GRW_@_Farm_Produce_@_latitude hidden>
+				<input type="text" class="class_assetLocation" value="2. GRW_@_Farm_Produce_@_assetLocation" hidden>
+
+				<script type="text/javascript" language="JavaScript">
+
+					function GetMap() {
+
+						var array_longitude = $('.class_longitude').map(function(){
+							return $(this).val()
+						}).get();
+
+						var array_latitude = $('.class_latitude').map(function(){
+							return $(this).val()
+						}).get();
+
+						var array_assetLocation = $('.class_assetLocation').map(function(){
+							return $(this).val()
+						}).get();
+
+						// var long0=parseInt(document.getElementById('long0').value);
+						// var lat0=parseInt(document.getElementById('lat0').value);
+
+						// var long1=parseInt(document.getElementById('long1').value);
+						// var lat1=parseInt(document.getElementById('lat1').value);
+
+						var longitude = new Array();
+						var latitude = new Array();
+						var title = new Array();
+						var description = new Array();
+						longitude = array_longitude
+						latitude = array_latitude
+						title = array_assetLocation
+						// description = ["Basel","India", "US"]
+
+						
+						var total = array_longitude.length;                //number of locations
+			
+						// longitude[0] = 	long0        //two defined locations
+						// latitude[0] = lat0
+						// title[0] = "1 Basler Münster"
+						// description[0] = "Basel"
+			
+						// longitude[1] =  long1   //second defined Location
+						// latitude[1] =  lat1 
+						// title[1] = "2 Pune"
+						// description[1] = "India"
+			
+						// longitude[2] =  23.634501   //second defined Location
+						// latitude[2] =  -102.552788 
+						// title[2] = "3 Mexico"
+						// description[2] = "US"
+			
+						var pinInfoBox;  //the pop up info box
+						var infoboxLayer = new Microsoft.Maps.EntityCollection();
+						var pinLayer = new Microsoft.Maps.EntityCollection();
+						var apiKey = "AmpgeSj6OVb9ILPwvjyIfwM3qmqm5yccyNGR_mxmbpw2znYZoXxQAz_KVbc84XCC";
+			
+							map = new Microsoft.Maps.Map(document.getElementById("map"), {credentials: apiKey});
+			
+							// Create the info box for the pushpin
+							pinInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false });
+							infoboxLayer.push(pinInfobox);
+			
+			
+							for (var i = 0 ; i < total; i++){
+								//add pushpins
+								var latLon = new Microsoft.Maps.Location(longitude[i], latitude[i]);
+								var pin = new Microsoft.Maps.Pushpin(latLon);
+								pin.Title = title[i];//usually title of the infobox
+								pin.Description = description[i]; //information you want to display in the infobox
+								pinLayer.push(pin); //add pushpin to pinLayer
+								Microsoft.Maps.Events.addHandler(pin, 'mouseover', displayInfobox);
+								Microsoft.Maps.Events.addHandler(pin, 'mouseout', hideInfobox);
+							}
+			
+							map.entities.push(pinLayer);
+							map.entities.push(infoboxLayer);
+							map.setView({zoom: 1, center: new Microsoft.Maps.Location(47.55330556, 7.59001851)});
+			
+			
+						}
+			
+						function displayInfobox(e) 
+						{
+							pinInfobox.setOptions({title: e.target.Title, description: e.target.Description, visible:true, offset: new Microsoft.Maps.Point(0,25)});
+							pinInfobox.setLocation(e.target.getLocation());
+						}
+			
+						function hideInfobox(e) 
+						{
+							pinInfobox.setOptions({ visible: false });
+						}
+			
+			
+					</script>
+
+
+				<!-- <img style="width:100%" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/map-location.png" alt="map"> -->
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6" style="margin: 0 auto;">
+				<section id="info">
+					<div class="line" style="margin-bottom: 30px;"></div>
+					<div style="width: 100%;">
+						<div id="Ingradient" class="info-boxes">
+							<div class="circle"></div>
+							<div class="sourcing-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Ingredient Details</p>
+								</div>
+								<div class="info-box">
+									<hr>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Input asset name</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_assetName[9] - moduleCode_@_transactionCode_@_assetId[9]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Product description</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Product_@_Description[9]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Grade, Cultivation method</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Grade[9] , moduleCode_@_transactionCode_@_Cultivation_@_Method[9]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_transactionEntityName[9] - moduleCode_@_transactionCode_@_assetLocation[9]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Produced date</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_effectiveDate[9]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Expiry date</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_expiryDate[9]</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="sourcing" class="info-boxes">
+							<div class="circle"></div>
+							<div class="sourcing-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Sourcing</p>
+								</div>
+								<div class="info-box">
+									<hr>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Date/Time</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Date[7] - moduleCode_@_transactionCode_@_Time[7]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Inspection remarks</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Inspection_@_Remarks[7]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_transactionEntityName[7] - moduleCode_@_transactionCode_@_assetLocation[7]</div>
+									</div>									
+								</div>
+							</div>
+						</div>
+						<div id="production" class="info-boxes">
+							<div class="circle"></div>
+							<div class="production-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Distribution</p>
+								</div>
+								<div class="info-box">
+									<hr>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Date/Time</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Date[3] - moduleCode_@_transactionCode_@_Time[3]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Grade, Ingredients, Nutrients</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Ingredients[3] </div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_transactionEntityName[2] - moduleCode_@_transactionCode_@_assetLocation[2]</div>
+									</div>								
+								</div>
+							</div>
+						</div>
+						<div id="quality" class="info-boxes">
+							<div class="circle"></div>
+							<div class="quality-info box arrow-left">
+								<div class="head">
+									<p class="box-title">Retailer</p>
+								</div>
+								<div class="info-box">
+									<hr>									
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Date/Time</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_Date[1] - moduleCode_@_transactionCode_@_Time[1]</div>
+									</div>
+									<div class="row details_row">
+										<div class="col-lg-6 product_lbl">Entity name, Location</div>
+										<div class="col-lg-6 text-right product_desc">moduleCode_@_transactionCode_@_transactionEntityName[1] - moduleCode_@_transactionCode_@_assetLocation[1]</div>
+									</div>
+									<div id="info-certified-quality" >
+										<p class="info-text" style="font-size: 12px;;">Quality certified by an independent laboratory for reference.
+										</p>
+										
+										<img  id="certified-by-lab-image" src="https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/certified-by-lab.png" style="width: 100%;" alt="certified-by-lab">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<section id="footer">
+			<img class="footer-image" src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/assets/footer.png" alt="">
+			<p class="copyright">Copyright 2021 All Rights Reserved</p>
+		</section>
+
+		<script src="https://snapchaintemplates.s3.ap-south-1.amazonaws.com/oliveoil/https://tracechaintemplates.s3.ap-south-1.amazonaws.com/60d21753140821001353e710/Premium/main.js"></script>
+	</body>
+</html>

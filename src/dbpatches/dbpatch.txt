@@ -1,0 +1,470 @@
+
+db.corporates.updateMany({}, {$set: {"organizationId": null }})
+
+db.corporates.aggregate([
+    {
+        $lookup: {
+            from: "relationships",
+            as: "relationship",
+            let: { "corporateId": "$_id" },
+            pipeline: [
+                {
+                    $match: {
+                        $and: [
+                            { $expr: { $eq: ["$childEntity", "$$corporateId"] } },
+                            { $expr: { $eq: ["$status", "approved"] } },
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    {
+        $addFields: {
+            count: {
+                $size: "$relationship"
+            }
+        }
+    },
+    {
+        $unwind: "$relationship"
+    },
+    {
+        $lookup: {
+            from: "organizations",
+            localField: "relationship.organizationId",
+            foreignField: "_id",
+            as: "organization"
+        }
+    },
+    {
+        $unwind: "$organization"
+    },
+]).forEach((corporate) => {
+    console.log(corporate._id, '=>', corporate.organization._id);
+    db.corporates.updateOne({ _id: corporate._id }, { $set: { organizationId: corporate.organization._id } })
+})
+
+
+
+db.orders.aggregate([
+
+    {
+        $lookup: {
+            from: "transtypes",
+            as: "transtypes",
+            // localField: "transtypeCode",
+            //foreignField: "transactionTypeCode",
+            let: { "orgId": "$organizationId", "transtypeCode": "$transtypeCode" },
+            pipeline: [
+                {
+                    $match: {
+                        $and: [
+                            { $expr: { $eq: ["$organizationId", "$$orgId"] } },
+                            { $expr: { $eq: ["$transactionTypeCode", "$$transtypeCode"] } },
+                            { $expr: { $eq: ["$isExpiry", false] } },
+                            // { $expr: { $eq: ["$isDeleted", false] } },
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    {
+        $unwind: "$transtypes"
+    },
+
+]).forEach((order) => {
+    console.log(order._id, '=>', order.transtypes.orderType);
+    db.orders.updateOne({ _id: order._id }, { $set: { orderType: order.transtypes.orderType } })
+})
+
+const aggregateArr = [
+        {
+        "$addFields":{
+            "customstatus":{
+                "$switch":{
+                    "branches":[
+                    {
+                        "case":{
+                            "$eq":[
+                                "$status",
+                                "New"
+                            ]
+                        },
+                        "then":"Active"
+                    },
+                    {
+                        "case":{
+                            "$ne":[
+                                "$status",
+                                "New"
+                            ]
+                        },
+                        "then":"Inactive"
+                    }
+                    ]
+                }
+            }
+        }
+        },
+        {
+        $match: conditionObj
+    },
+    {
+        "$lookup":{
+            "from":"modules",
+            "as":"module",
+            "let":{
+                "moduleCode":"$moduleCode",
+                "organizationId":"$organizationId"
+            },
+            "pipeline":[
+                {
+                    "$match":{
+                    "$and":[
+                        {
+                            "$expr":{
+                                "$eq":[
+                                "$code",
+                                "$$moduleCode"
+                                ]
+                            }
+                        },
+                        {
+                            "$expr":{
+                                "$eq":[
+                                "$organizationId",
+                                "$$organizationId"
+                                ]
+                            }
+                        },
+                        {
+                            "$expr":{
+                                "$eq":[
+                                "$is_deleted",
+                                false
+                                ]
+                            }
+                        }
+                    ]
+                    }
+                }
+            ]
+        }
+        },
+        {
+        "$unwind":{
+            "path":"$module",
+            "preserveNullAndEmptyArrays":true
+        }
+        },
+        {
+        "$lookup":{
+            "from":"organizations",
+            "let":{
+                "transactionEntity":"$transactionEntity",
+                // "refEntity":"$refEntity"
+            },
+            "as":"organizations_details",
+            "pipeline":[
+                {
+                    "$match":{
+                    "$expr":{
+                        "$and":[
+                            {
+                                "$eq":[
+                                "$$transactionEntity",
+                                "$code"
+                                ]
+                            },
+                            // {
+                            //   "$eq":[
+                            //       "$$refEntity",
+                            //       "$code"
+                            //   ]
+                            // }
+                        ]
+                    }
+                    }
+                }
+            ]
+        }
+        },
+        {
+        "$lookup":{
+            "from":"organizations",
+            "let":{
+                //"transactionEntity":"$transactionEntity",
+                "refEntity":"$refEntity"
+            },
+            "as":"reforganizations_details",
+            "pipeline":[
+                {
+                    "$match":{
+                    "$expr":{
+                        "$and":[
+                            // {
+                            //   "$eq":[
+                            //       "$$transactionEntity",
+                            //       "$code"
+                            //   ]
+                            // },
+                            {
+                            "$eq":[
+                                "$$refEntity",
+                                "$code"
+                            ]
+                            }
+                        ]
+                    }
+                    }
+                }
+            ]
+        }
+        },
+        {
+        "$lookup":{
+            "from":"corporates",
+            "let":{
+                "ctransactionEntity":"$transactionEntity",
+                // "crefEntity":"$refEntity"
+            },
+            "as":"corporates_details",
+            "pipeline":[
+                {
+                    "$match":{
+                    "$expr":{
+                        "$and":[
+                            {
+                                "$eq":[
+                                "$$ctransactionEntity",
+                                "$code"
+                                ]
+                            }
+                            // {
+                            //   "$eq":[
+                            //       "$$crefEntity",
+                            //       "$code"
+                            //   ]
+                            // }
+                        ]
+                    }
+                    }
+                }
+            ]
+        }
+        },
+        {
+        "$lookup":{
+            "from":"corporates",
+            "let":{
+                //"ctransactionEntity":"$transactionEntity",
+                "crefEntity":"$refEntity"
+            },
+            "as":"refcorporates_details",
+            "pipeline":[
+                {
+                    "$match":{
+                    "$expr":{
+                        "$and":[
+                            // {
+                            //   "$eq":[
+                            //       "$$ctransactionEntity",
+                            //       "$code"
+                            //   ]
+                            // },
+                            {
+                            "$eq":[
+                                "$$crefEntity",
+                                "$code"
+                            ]
+                            }
+                        ]
+                    }
+                    }
+                }
+            ]
+        }
+        },
+    
+    {
+        "$lookup":{
+            "from":"departments",
+            "let":{
+                "transactionEntityBranch":"$transactionEntityBranch",
+                "refEntityBranch":"$refEntityBranch"
+            },
+            "as":"department",
+            "pipeline":[
+                {
+                "$match":{
+                    "$expr":{
+                        "$and":[
+                            {
+                            "$eq":[
+                                "$$transactionEntityBranch",
+                                "$code"
+                            ]
+                            }
+                        ]
+                    }
+                }
+                }
+            ]
+        }
+    },
+    {
+        "$unwind":{
+            "path":"$department",
+            "preserveNullAndEmptyArrays":true
+        }
+    },
+    {
+        "$addFields":{
+            "allEntityTypes":{
+                "$concatArrays":[
+                "$organizations_details",
+                "$corporates_details",
+                //"$refcorporates_details",
+                //"$reforganizations_details"
+                ]
+            },
+            "allRefEntityTypes":{
+                "$concatArrays":[
+                "$refcorporates_details",
+                "$reforganizations_details"
+                ]
+            },
+            
+        }
+    },
+    {
+        "$addFields":{
+            "transactionEntityDetails":{
+                "$filter":{
+                "input":"$allEntityTypes",
+                "as":"item",
+                "cond":{
+                    "$eq":[
+                        "$$item.code",
+                        "$transactionEntity"
+                    ]
+                }
+                }
+            },
+            "refEntityDetails":{
+                "$filter":{
+                "input":"$allRefEntityTypes",
+                "as":"item",
+                "cond":{
+                    "$eq":[
+                        "$$item.code",
+                        "$refEntity"
+                    ]
+                }
+                }
+            }
+        }
+    },
+    {
+        "$project":{
+            //"allEntityTypes":0,
+            "organizations_details":0,
+            //"corporates_details":0
+        }
+    },
+    {
+        "$unwind":{
+            "path":"$transactionEntityDetails",
+            "preserveNullAndEmptyArrays":true
+        }
+    },
+    {
+        "$unwind":{
+            "path":"$refEntityDetails",
+            "preserveNullAndEmptyArrays":true
+        }
+    },
+    {
+        "$unwind":{
+            "path":"$corporates_details",
+            "preserveNullAndEmptyArrays":true
+        }
+    },
+    {
+        "$lookup":{
+            "from":"transtypes",
+            "as":"transtype",
+            "let":{
+                "transtypeCode":"$transtypeCode",
+                "moduleId":"$module._id",
+                "organizationId":"$organizationId",
+                "transactionEntityTypeId":"$transactionEntityDetails._id",
+                "refEntityTypeId":"$refEntityDetails._id",
+                "transactionEntityType":"$transactionEntityType",
+                "corpId":"$corporates_details._id"
+            },
+            "pipeline":[
+                {
+                "$match":{
+                    "$and":[
+                        {
+                            "$expr":{
+                            "$eq":[
+                                "$transactionTypeCode",
+                                "$$transtypeCode"
+                            ]
+                            }
+                        },
+                        {
+                            "$expr":{
+                            "$eq":[
+                                "$moduleId",
+                                "$$moduleId"
+                            ]
+                            }
+                        },
+                        {
+                            "$expr":{
+                            "$eq":[
+                                "$organizationId",
+                                "$$organizationId"
+                            ]
+                            }
+                        },
+                        
+                        {
+                            "$expr":{
+                                
+                                        $cond: { if: { $and:[{$eq: ["$$transactionEntityType", "Partner"] }]}, 
+                                        //then: {$eq: ["$corporateId", ObjectId("60d225d3140821001353e72d")] },
+                                        then: {$eq: ["$corporateId", "$$corpId"] },
+                                        else: { $eq: ["$corporateId", null] }
+                                            
+                                        } 
+                                    
+                                    } ,
+                                }
+                            
+                    ]
+                }
+                }
+            ]
+        }
+    },
+    {
+        "$unwind":"$transtype"
+    },
+
+    {
+        $project: {"allEntityTypes":0, "refcorporates_details":0,"corporates_details":0}
+    },
+        {
+        $match: conditionObj1
+    }
+];
+
+db.transtypes.updateMany({ corporateId: { $exists: false } }, { $set: { corporateId: null } });
+db.departments.updateMany({ code : "Default" }, { $set: { code: "HO" , headquarter : true } });
+db.departments.updateMany({ headquarter : { $exists: false } }, { $set: { headquarter : false } });

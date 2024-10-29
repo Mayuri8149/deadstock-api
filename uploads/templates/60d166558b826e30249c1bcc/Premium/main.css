@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #000000;
+    transition: all 0.2s ease-out;
+}
+.row {
+    margin: 0 !important;
+}
+hr{
+    margin: 8px 0 !important;
+}
+li {
+    margin: 2px !important;
+}
+
+/* navbar start */
+.navbar {
+    box-shadow: 0px 3px 3px #00000029;
+    width: 100%;
+}
+
+.social-media {
+    padding: 0 0.2em;
+}
+/* navbar end */
+
+/* intro start */
+.intro-text {
+    margin: 30px 0 0 39px;
+    max-width: max-content;
+}
+.intro-text-one {
+    font: normal normal bold 24px/18px Montserrat;
+    line-height: normal;
+}
+.intro-text-two {
+    font: normal normal bold 10px/13px Montserrat;
+	margin-bottom: 2px;
+	color: #858484;
+}
+.intro-text-three {
+    font: normal normal bold 10px/13px Montserrat;
+    color: #858484;
+}
+
+.oliveoil {
+    justify-content: center;
+    align-items: baseline;
+    display: flex;
+    margin-top: 1.2em;
+}
+/* intro end */
+
+/* tagline start */
+.tag {
+    background: #9D8F29 0% 0% no-repeat padding-box;
+    opacity: 0.86;
+    text-align: center;
+    font: normal normal bold 12px/15px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    padding: 18px;
+}
+/* tagline end */
+
+/* proof points start */
+.proof-points-title {
+    text-align: center;
+    font: normal normal bold 8px/10px Montserrat;
+    letter-spacing: 0px;
+    color: #000000;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.proof-points-row {
+    justify-content: center;
+}
+.rect {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 1px 1px #00000029;
+    border: 1px solid #B5B2B2;
+    border-radius: 9px;
+    opacity: 1;
+    padding: 10px;
+    margin: 2.5px;
+    min-width: 76px;
+    min-height: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.rect-image {
+    margin-bottom: 16px;
+}
+.rect-text {
+    text-align: center;
+    font: normal normal bold 8px/10px Montserrat;
+    opacity: 1;
+    margin: 0;
+}
+/* proof points end */
+
+/* location start */
+#location {
+    background: #F8F8F8 0% 0% no-repeat padding-box;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.journey {
+    text-align: center;
+    font: normal normal bold 8px/13px Montserrat;
+    color: #979595;
+    text-transform: uppercase;
+    padding-top: 26px;
+    margin-bottom: 0;
+}
+.travel {
+    text-align: center;
+    font: normal normal bold 10px/13px Montserrat;
+    color: #000000;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+.map {
+    background-image: url(assets/map.png);
+    background-size: cover;
+    background-position: center;
+    height: 75vw;
+    transform: scale(0.9);    
+    box-shadow: inset 0 0 100vw rgb(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+}
+.map-icon {
+    margin: 1.5px;
+}
+/* location end */
+
+/* info start */
+#info {
+    padding: 20px 30px 20px 5px;
+    display: flex;
+}
+.line {
+    background: #000000 0% 0% no-repeat padding-box;
+    min-width: 2px;
+    margin-left: 10px;
+    position: relative;
+    top: 20px;
+}
+.circle {
+    background: #000000 0% 0% no-repeat padding-box;
+    height: 6px;
+    width: 6px;
+    border-radius: 5px; 
+    position: relative;
+    right: 3.5px;  
+    top: 20px;
+}
+.info-boxes {
+    /* display: flex; */
+    width: 100%;
+}
+.box {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #AA9E47;
+    opacity: 1;
+    max-width: 100%;
+    height: fit-content;
+    position: relative;
+    margin-left: 15px;
+    bottom: 6px;
+    padding: 10px 23.5px;
+}
+.box.arrow-left::before {
+    content: " ";
+    position: absolute;
+    left: -7px;
+    top: 15px;
+    height: 14px;
+    width: 14px;
+    background-color: white;
+    border: 1px solid #AA9E47;
+    transform: rotate(45deg);
+    border-right: transparent;
+    border-top: transparent; 
+}
+.box-title {
+    text-align: left;
+    font: normal normal bold 8px/10px Montserrat;
+    text-transform: uppercase;
+    opacity: 1;
+    margin: 0;
+}
+.info-buttons {
+    background-color: white;
+    border-radius: 2px;
+    opacity: 1;
+    padding: 0 10px;
+    height: 19px;
+    text-align: center;
+    font: normal normal bold 6px/8px Montserrat;
+    letter-spacing: 0px;
+    color: #AA9E47;
+    text-transform: uppercase;
+    border: 1px solid #AA9E47;
+}
+.active, .info-buttons:active {
+    background: #AA9E47 0% 0% no-repeat padding-box;
+    color: white;
+    border: none;
+}
+.info-text {
+    text-align: left;
+    font: normal normal normal 8px/12px Montserrat;
+    color: #817F7F;
+    opacity: 1;
+    margin: 10px 0;
+}
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fa-angle-down.down{
+    -moz-transform:rotate(180deg);
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+.arrow-button {
+    border: none;
+    background: none;
+    transform: rotate(180deg);
+}
+#info-location {
+    display: block;
+}
+#info-location-history, #info-production-process, #analytical-data-image {
+    display: none;
+}
+#two {
+    display: none;
+}
+.stages {
+    display: flex;
+    flex-wrap: wrap;
+}
+.stages-text {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #AA9E47;
+    border-radius: 10px;
+    opacity: 1;
+    text-align: center;
+    font: normal normal bold 6px/8px Montserrat;
+    color: #AA9E47;
+    text-transform: uppercase;
+    padding: 6px 9px;
+    margin: 5px 0;
+}
+.yellow-line {
+    height: 1px;
+    width: 5px;
+    background: #AA9E47;
+    position: relative;
+    top: 13px;
+}
+.read-more {
+    text-align: left;
+    font: normal normal normal 8px/12px Montserrat;
+    color: #817F7F;
+    opacity: 1;
+}
+.production-process-image, .transparency-image, .production-image {
+    width: 100%;
+    display: none;
+}
+/* info end */
+
+/* footer start */
+.footer-image {
+    width: 100%;
+    margin-top: 20px;
+}
+.copyright {
+    text-align: center;
+    font: normal normal 100 7px/35px Montserrat;
+    letter-spacing: 0.84px;
+    color: #FFFFFF;
+    background: #96983F 0% 0% no-repeat padding-box;
+    margin: 0;
+}
+/* footer end */
