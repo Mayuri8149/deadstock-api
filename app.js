@@ -15,7 +15,7 @@ var AWS = require('aws-sdk');
 var v8 = require('v8');
 const helmet = require("helmet");
 const swaggerUI = require("swagger-ui-express");
-const swaggerDocument = require('./swagger.json');
+// const swaggerDocument = require('./swagger.json');
 
 if(process.env.NODE_ENV == 'production'){
   console.log('ifffff')
@@ -58,7 +58,7 @@ app.use(validator());
 app.use(auth.verify);
 
 app.use(require("./routes"));
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+// app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use(function(req, res, next) {
   next(createError(404));
 });
