@@ -8,4 +8,7 @@ var config = {
 };
 config.MONGODB_URI = `mongodb://localhost/${config.MONGODB_DBNAME}?retryWrites=true&w=majority&poolSize=4`
 
+config.flagBlockchain = {
+    blockChainFlag:false
+}
 module.exports = config;
