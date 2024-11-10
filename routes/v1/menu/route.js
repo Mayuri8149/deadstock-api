@@ -29,7 +29,9 @@ router.post("/create", upload.single('file'), (req, res) => {
     var menu = {};
     menu.name = req.body.name;
     menu.file = req.file ? req.file.path : ''; // Check if req.file exists before accessing its properties
-    console.log('req.body', req.body);
+    
+    menu.submenu = req.body.submenu || '[]'
+
     console.log('req.file2', req.file);
     var create = () => {
         model.create(menu).then((result) => {
